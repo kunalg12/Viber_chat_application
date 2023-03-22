@@ -17,7 +17,7 @@ export default function Login() {
 
   return (
     <RouteUnAuthProtect>
-      <Seo title={"Login | Message Grid"} />
+      <Seo title={"Login | Viber"} />
       <Authentication
         title={"Login"}
         loading={loading}

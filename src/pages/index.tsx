@@ -7,7 +7,7 @@ export default function Chat() {
   return (
     <RouteAuthProtect>
       <RouteAuthProtect>
-        <Seo title={`Message Grid`} />
+        <Seo title={`Viber`} />
         <Flex>
           <Sidebar />
           <Box

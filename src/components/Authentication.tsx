@@ -101,7 +101,7 @@ const Authentication: React.FC<AuthenticationProps> = ({
 
   return (
     <>
-      <Seo title={`${title} | Message Grid`} />
+      <Seo title={`${title} | Viber`} />
       <Center
         width={"100%"}
         minH={"100vh"}
@@ -154,7 +154,7 @@ const Authentication: React.FC<AuthenticationProps> = ({
                 {title}
               </Text>
               <Text variant={"p"} color={"gray.500"} fontSize={"lg"}>
-                Welcome to Message Grid
+                Welcome to Viber
               </Text>
             </Stack>
             <Stack width={"100%"} spacing={4}>
