@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Seo from "@component/SEO";
-import LogoWithText from "@images/LogoText.png";
+import LogoWithText from "@images/vibber-logo.png";
 import GoogleIcon from "@images/google.png";
 import GithubIcon from "@images/github.png";
 import Static from "@images/staticbg.png";
