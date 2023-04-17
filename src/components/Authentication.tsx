@@ -138,12 +138,21 @@ const Authentication: React.FC<AuthenticationProps> = ({
             placeItems={"center"}
             bg={"white"}
           >
-            <Image
-              alt={"Image"}
-              width={250}
-              height={96.9713}
-              src={LogoWithText}
-            />
+            <div
+              style={{
+                position: "relative",
+                overflow: "hidden",
+                height: "100px",
+                width: "200px",
+              }}
+            >
+              <Image
+                alt={"Image"}
+                layout={"fill"}
+                objectFit={"contain"}
+                src={LogoWithText}
+              />
+            </div>
             <Stack textAlign={"center"}>
               <Text
                 variant={"p"}
