@@ -27,7 +27,7 @@ export default function Login() {
       >
         <Flex direction={"row-reverse"} justifyContent={"space-between"}>
           <NextLink href="/signup" passHref>
-            <Link color={"gray.600"} fontSize={"sm"}>
+            <Link zIndex={100} color={"gray.600"} fontSize={"sm"}>
               Don't Have an account?
             </Link>
           </NextLink>
