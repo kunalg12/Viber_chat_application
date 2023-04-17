@@ -168,40 +168,29 @@ export default function Message({
               {messages.message}
             </Box>
           </Tooltip>
-          <Menu>
-            <Tooltip label={"More"}>
-              <MenuButton
-                display={"grid"}
-                placeItems={"center"}
-                visibility={"hidden"}
-                color={"gray.500"}
-                aria-label={"More"}
-                bg={"transparent"}
-                _groupHover={{ visibility: "visible" }}
-                as={IconButton}
-              >
-                <IoEllipsisVertical />
-              </MenuButton>
-            </Tooltip>
-            <MenuList zIndex={100}>
-              <MenuItem>Reply</MenuItem>
-              {user === authUser && (
+          {user === authUser ? (
+            <Menu>
+              <Tooltip label={"More"}>
+                <MenuButton
+                  display={"grid"}
+                  placeItems={"center"}
+                  visibility={"hidden"}
+                  color={"gray.500"}
+                  aria-label={"More"}
+                  bg={"transparent"}
+                  _groupHover={{ visibility: "visible" }}
+                  as={IconButton}
+                >
+                  <IoEllipsisVertical />
+                </MenuButton>
+              </Tooltip>
+              <MenuList zIndex={100}>
                 <MenuItem onClick={deleteMessage}>Delete</MenuItem>
-              )}
-            </MenuList>
-          </Menu>
-
-          <Tooltip label={"Reply"}>
-            <IconButton
-              visibility={"hidden"}
-              _groupHover={{ visibility: "visible" }}
-              bg={"transparent"}
-              color={"gray.500"}
-              aria-label={"Reply"}
-            >
-              <IoRepeatOutline />
-            </IconButton>
-          </Tooltip>
+              </MenuList>
+            </Menu>
+          ) : (
+            <></>
+          )}
           {user === authUser && (
             <Tooltip label={"Delete"}>
               <IconButton
