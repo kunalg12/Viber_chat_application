@@ -198,9 +198,6 @@ export default function Sidebar() {
             <Text color={"gray.600"}>{username}</Text>
           </Flex>
           <Flex gap={"1rem"}>
-            <IconButton aria-label={"Chat"}>
-              <IoChatboxEllipsesOutline />
-            </IconButton>
             <Menu>
               <MenuButton as={Button}>
                 <IoEllipsisVerticalOutline />
