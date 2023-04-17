@@ -28,11 +28,8 @@ import {
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
-import {
-  IoChatboxEllipsesOutline,
-  IoEllipsisVerticalOutline,
-  IoSearchOutline,
-} from "react-icons/io5";
+import { IoEllipsisVerticalOutline, IoSearchOutline } from "react-icons/io5";
+import { RxHamburgerMenu } from "react-icons/rx";
 import { useAuth, useUserDetails } from "../context/AuthContext";
 import { useCallback, useState } from "react";
 import { chatCollection, userCollection } from "@db/collections";
@@ -189,18 +186,27 @@ export default function Sidebar() {
           border-bottom={"1px solid #f7f7f7"}
         >
           <Flex gap={"10px"} alignItems={"center"}>
-            <Avatar
-              cursor={"pointer"}
-              transition={"all 0.25s"}
-              _hover={{ opacity: 0.7 }}
-              src={user.photoURL}
-            />
+            <Menu>
+              <MenuButton>
+                <Avatar
+                  cursor={"pointer"}
+                  transition={"all 0.25s"}
+                  _hover={{ opacity: 0.7 }}
+                  src={user.photoURL}
+                />
+              </MenuButton>
+              <MenuList>
+                <MenuGroup>
+                  <MenuItem onClick={signOut}>Logout</MenuItem>
+                </MenuGroup>
+              </MenuList>
+            </Menu>
             <Text color={"gray.600"}>{username}</Text>
           </Flex>
           <Flex gap={"1rem"}>
             <Menu>
               <MenuButton as={Button}>
-                <IoEllipsisVerticalOutline />
+                <RxHamburgerMenu />
               </MenuButton>
               <MenuList>
                 <MenuGroup>
