@@ -8,12 +8,7 @@ import { useAuth } from "../context/AuthContext";
 import { RouteUnAuthProtect } from "@layout/RouteGuard";
 
 export default function Login() {
-  const {
-    signInWithGoogle,
-    signInWithGithub,
-    signInWithEmailAndPassword,
-    loading,
-  } = useAuth();
+  const { signInWithGoogle, signInWithGithub, loading } = useAuth();
 
   return (
     <RouteUnAuthProtect>
@@ -23,16 +18,7 @@ export default function Login() {
         loading={loading}
         signInWithGoogle={signInWithGoogle}
         signInWithGithub={signInWithGithub}
-        signInWithEmail={signInWithEmailAndPassword}
-      >
-        <Flex direction={"row-reverse"} justifyContent={"space-between"}>
-          <NextLink href="/signup" passHref>
-            <Link color={"gray.600"} fontSize={"sm"}>
-              Don't Have an account?
-            </Link>
-          </NextLink>
-        </Flex>
-      </Authentication>
+      />
     </RouteUnAuthProtect>
   );
 }
