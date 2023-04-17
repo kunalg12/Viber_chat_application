@@ -11,6 +11,7 @@ const ChatSend = ({ router, username, user, callback, updateChat }) => {
 
   const sendButtonClick = (e) => {
     e.preventDefault();
+    if (!input) return;
     chatCollection()
       .doc(getQueryId(router))
       .collection("messages")
