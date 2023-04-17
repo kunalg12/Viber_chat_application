@@ -12,7 +12,7 @@ export default function Chat({ chat }) {
   const { user } = useUserDetails();
   return (
     <RouteAuthProtect>
-      <Seo title={`Message Grid | ${getRecipientUsername(chat.users, user)}`} />
+      <Seo title={`Vibber | ${getRecipientUsername(chat.users, user)}`} />
       <Flex>
         <Sidebar />
         <ChatScreen chat={chat} />
