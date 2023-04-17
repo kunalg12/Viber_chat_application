@@ -4,13 +4,14 @@ import { useState } from "react";
 import { chatCollection } from "@db/collections";
 import { getQueryId } from "../utils";
 import firebase from "firebase/compat/app";
+import InputEmoji from "react-input-emoji";
 
 // Handle Chat Send Functions
 const ChatSend = ({ router, username, user, callback, updateChat }) => {
   const [input, setInput] = useState("");
 
-  const sendButtonClick = (e) => {
-    e.preventDefault();
+  const sendButtonClick = () => {
+    // e.preventDefault();
     if (!input) return;
     chatCollection()
       .doc(getQueryId(router))
@@ -39,25 +40,12 @@ const ChatSend = ({ router, username, user, callback, updateChat }) => {
       gap={"10px"}
       padding={"1rem 1.5rem"}
     >
-      <IconButton bg={"transparent"} aria-label={"Emoji Icon"}>
-        <IoHappyOutline />
-      </IconButton>
-      <Input
+      <InputEmoji
         value={input}
-        onChange={(e) => {
-          setInput(e.target.value);
-        }}
-        placeholder={"Type here.."}
-        flex={1}
+        onChange={(e) => setInput(e)}
+        onEnter={sendButtonClick}
+        placeholder="Type a message"
       />
-      <Button
-        onClick={sendButtonClick}
-        disabled={input === ""}
-        type={"submit"}
-        bg={"transparent"}
-      >
-        <IoPaperPlaneOutline />
-      </Button>
     </Flex>
   );
 };
