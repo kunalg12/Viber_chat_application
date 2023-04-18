@@ -101,7 +101,7 @@ const Authentication: React.FC<AuthenticationProps> = ({
 
   return (
     <>
-      <Seo title={`${title} | Viber`} />
+      <Seo title={`${title} | Vibber`} />
       <Center
         width={"100%"}
         minH={"100vh"}
@@ -163,7 +163,7 @@ const Authentication: React.FC<AuthenticationProps> = ({
                 {title}
               </Text>
               <Text variant={"p"} color={"gray.500"} fontSize={"lg"}>
-                Welcome to Viber
+                Welcome to Vibber
               </Text>
             </Stack>
             <Stack width={"100%"} spacing={4}>
