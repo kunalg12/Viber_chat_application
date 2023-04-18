@@ -1,6 +1,6 @@
 import { Box, Center, Spinner, Stack, Text } from "@chakra-ui/react";
 import Image from "next/image";
-import LogoWithText from "@images/LogoText.png";
+import LogoWithText from "@images/vibber-logo.png";
 
 /**
  * Screen loader while authentication details loading

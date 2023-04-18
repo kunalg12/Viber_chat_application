@@ -6,8 +6,11 @@ import {
   SkeletonCircle,
   SkeletonText,
   Text,
+  Tooltip,
+  Button,
 } from "@chakra-ui/react";
 import { IoEllipsisVertical } from "react-icons/io5";
+import { RxHamburgerMenu } from "react-icons/rx";
 import { useUserDetails } from "../context/AuthContext";
 import { getQueryId, getRecipientUsername, isInViewport } from "../utils";
 import { chatCollection, userCollection } from "@db/collections";
@@ -32,9 +35,15 @@ interface ChatScreenPropInterface {
     users: Array<string>;
     id: string;
   };
+  sidebarVisible: boolean;
+  toggleSidebar: () => void;
 }
 
-export const ChatScreen = ({ chat }: ChatScreenPropInterface) => {
+export const ChatScreen = ({
+  chat,
+  sidebarVisible,
+  toggleSidebar,
+}: ChatScreenPropInterface) => {
   // Authenticated username and user details
   const { username, user } = useUserDetails();
   // Partner/Chat Partner username
@@ -200,6 +209,17 @@ export const ChatScreen = ({ chat }: ChatScreenPropInterface) => {
         justifyContent={"space-between"}
       >
         <Flex alignItems={"center"} gap={"10px"}>
+          {!sidebarVisible ? (
+            <Flex gap={"1rem"}>
+              <Tooltip label="Open Sidebar">
+                <Button onClick={toggleSidebar}>
+                  <RxHamburgerMenu />
+                </Button>
+              </Tooltip>
+            </Flex>
+          ) : (
+            <></>
+          )}
           <Avatar
             name={recipientUsername}
             src={recipientSnapshot?.docs[0]?.data().photoURL}
