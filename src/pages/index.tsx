@@ -9,7 +9,7 @@ export default function Chat() {
       <RouteAuthProtect>
         <Seo title={`Viber`} />
         <Flex>
-          <Sidebar />
+          <Sidebar visible={true} toggleSidebar={null} />
           <Box
             bg={"gray.100"}
             className={"custom-scroll"}

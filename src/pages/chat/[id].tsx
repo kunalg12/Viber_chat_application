@@ -7,15 +7,39 @@ import { getRecipientUsername } from "../../utils";
 import { useUserDetails } from "../../context/AuthContext";
 import { ChatScreen } from "@component/ChatScreen";
 import Router from "next/router";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Chat({ chat }) {
+  const [sidebarVisible, setSidebarVisible] = useState(true);
   const { user } = useUserDetails();
   return (
     <RouteAuthProtect>
       <Seo title={`Vibber | ${getRecipientUsername(chat.users, user)}`} />
       <Flex>
-        <Sidebar />
-        <ChatScreen chat={chat} />
+        <AnimatePresence exitBeforeEnter={true}>
+          {sidebarVisible ? (
+            <motion.div
+              key="sidebar"
+              initial={{ x: -100 }}
+              animate={{ x: 0 }}
+              exit={{ x: -100 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Sidebar
+                visible={sidebarVisible}
+                toggleSidebar={() => setSidebarVisible(false)}
+              />
+            </motion.div>
+          ) : (
+            <></>
+          )}
+        </AnimatePresence>
+        <ChatScreen
+          sidebarVisible={sidebarVisible}
+          toggleSidebar={() => setSidebarVisible(!sidebarVisible)}
+          chat={chat}
+        />
       </Flex>
     </RouteAuthProtect>
   );

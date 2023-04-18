@@ -27,11 +27,12 @@ import {
   Text,
   useDisclosure,
   useToast,
+  Tooltip,
 } from "@chakra-ui/react";
-import { IoEllipsisVerticalOutline, IoSearchOutline } from "react-icons/io5";
+import { IoSearchOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useAuth, useUserDetails } from "../context/AuthContext";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { chatCollection, userCollection } from "@db/collections";
 import { useCollection } from "react-firebase-hooks/firestore";
 import Contact from "@component/Contact";
@@ -41,7 +42,7 @@ import firebase from "firebase/compat/app";
  * Sidebar for Contacts
  * @component
  **/
-export default function Sidebar() {
+export default function Sidebar({ visible, toggleSidebar }) {
   // useDisclosure for starting a new chat
   const { isOpen, onOpen, onClose } = useDisclosure();
   // The person to send message , his or her username
@@ -165,6 +166,7 @@ export default function Sidebar() {
     chat.sort(compare);
     return chat;
   }, [chatSnapshot]);
+
   return (
     <>
       <Box
@@ -203,18 +205,17 @@ export default function Sidebar() {
             </Menu>
             <Text color={"gray.600"}>{username}</Text>
           </Flex>
-          <Flex gap={"1rem"}>
-            <Menu>
-              <MenuButton as={Button}>
-                <RxHamburgerMenu />
-              </MenuButton>
-              <MenuList>
-                <MenuGroup>
-                  <MenuItem onClick={signOut}>Logout</MenuItem>
-                </MenuGroup>
-              </MenuList>
-            </Menu>
-          </Flex>
+          {toggleSidebar ? (
+            <Flex gap={"1rem"}>
+              <Tooltip label="Close Sidebar">
+                <Button onClick={toggleSidebar}>
+                  <RxHamburgerMenu />
+                </Button>
+              </Tooltip>
+            </Flex>
+          ) : (
+            <></>
+          )}
         </Flex>
         <Stack spacing={5}>
           <InputGroup size={"md"}>
@@ -286,7 +287,7 @@ export default function Sidebar() {
           <ModalFooter>
             <Button
               onClick={createChat}
-              disabled={
+              isDisabled={
                 !inputUsername || inputUsername === username || !message
               }
               colorScheme="blue"
