@@ -7,7 +7,7 @@ export default function Chat() {
   return (
     <RouteAuthProtect>
       <RouteAuthProtect>
-        <Seo title={`Viber`} />
+        <Seo title={`Vibber`} />
         <Flex>
           <Sidebar visible={true} toggleSidebar={null} />
           <Box
