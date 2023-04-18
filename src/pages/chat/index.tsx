@@ -7,9 +7,9 @@ export default function Chat() {
   return (
     <RouteAuthProtect>
       <RouteAuthProtect>
-        <Seo title={`Message Grid`} />
+        <Seo title={`Vibber`} />
         <Flex>
-          <Sidebar />
+          <Sidebar visible={true} toggleSidebar={null} />
           <Box
             bg={"gray.100"}
             className={"custom-scroll"}

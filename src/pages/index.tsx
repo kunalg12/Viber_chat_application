@@ -2,7 +2,6 @@ import Sidebar from "@component/Sidebar";
 import { RouteAuthProtect } from "@layout/RouteGuard";
 import Seo from "@component/SEO";
 import { Box, Flex, Text } from "@chakra-ui/react";
-import { useState } from "react";
 
 export default function Chat() {
   return (
