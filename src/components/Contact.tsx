@@ -3,6 +3,7 @@ import { getRecipientUsername, getSnapshotData } from "../utils";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { chatCollection, userCollection } from "@db/collections";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 // Prop type
 interface ContactProps {
@@ -13,13 +14,20 @@ interface ContactProps {
   };
   username: string;
   id: string;
+  toggleSidebar: () => void;
 }
 
-export default function Contact({ chat, username, id }: ContactProps) {
+export default function Contact({
+  chat,
+  username,
+  id,
+  toggleSidebar,
+}: ContactProps) {
   // Recipient Username, The partner's username
   // Here `chat` is an object contains a list of users, where
   // participants are in the current chat
   const recipientUsername = getRecipientUsername(chat.users, username);
+
   // User Collection where username is Recipient Username
   const userCollectionRef = userCollection().where(
     "username",
@@ -29,6 +37,7 @@ export default function Contact({ chat, username, id }: ContactProps) {
   // Recipient snapshot
   // Contains Recipient Data {online, photoURL, lastSeen, username}
   const [recipientSnapshot] = useCollection(userCollectionRef as any);
+  const [width, setWidth] = useState(window.innerWidth);
 
   // Message state snapshot
   const [messageStateSnapshot] = useCollection(
@@ -42,6 +51,9 @@ export default function Contact({ chat, username, id }: ContactProps) {
 
   // Route push to chat inbox
   const onClickContact = async () => {
+    if (width <= 500) {
+      toggleSidebar();
+    }
     await router.push(`/chat/${id}`);
   };
 
@@ -74,6 +86,14 @@ export default function Contact({ chat, username, id }: ContactProps) {
   // Both height and width has to be same
   // So A function to define the size
   const unreadSize = () => unreadMsgSizeIncrease("15px", "17px", "19px");
+
+  const updateDimensions = () => {
+    setWidth(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
 
   return (
     <Flex
