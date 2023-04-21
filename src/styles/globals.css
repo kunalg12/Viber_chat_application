@@ -18,3 +18,9 @@
 * *::-webkit-scrollbar-thumb {
   background-color: rgba(103, 103, 103, 0.3);
 }
+
+@media (max-width: 500px) {
+  .sidebar {
+    width: 100vw;
+  }
+}

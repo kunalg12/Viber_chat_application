@@ -31,6 +31,7 @@ import {
 } from "@chakra-ui/react";
 import { IoSearchOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { FaSignOutAlt } from "react-icons/fa";
 import { useAuth, useUserDetails } from "../context/AuthContext";
 import { useCallback, useEffect, useState } from "react";
 import { chatCollection, userCollection } from "@db/collections";
@@ -199,7 +200,10 @@ export default function Sidebar({ visible, toggleSidebar }) {
               </MenuButton>
               <MenuList>
                 <MenuGroup>
-                  <MenuItem onClick={signOut}>Logout</MenuItem>
+                  <MenuItem onClick={signOut}>
+                    <FaSignOutAlt style={{ color: "gray" }} />
+                    <span style={{ margin: "0 5px" }}>Logout</span>
+                  </MenuItem>
                 </MenuGroup>
               </MenuList>
             </Menu>
@@ -252,6 +256,7 @@ export default function Sidebar({ visible, toggleSidebar }) {
               chat={chat}
               id={chat.id}
               username={username}
+              toggleSidebar={toggleSidebar}
             />
           ))}
         </Stack>
