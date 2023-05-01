@@ -46,6 +46,10 @@ const ChatSend = ({ router, username, user, callback, updateChat }) => {
         onEnter={sendButtonClick}
         placeholder="Type a message"
       />
+
+      <IconButton bg={"transparent"} aria-label={"Send Icon"}>
+        <IoHappyOutline />
+      </IconButton>
     </Flex>
   );
 };

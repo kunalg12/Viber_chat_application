@@ -5,11 +5,11 @@ import Head from "next/head";
  * @param title SEO Title
  * @component
  */
-export default function Seo({ title = "Message grid" }: { title?: string }) {
+export default function Seo({ title = "Vibber" }: { title?: string }) {
   return (
     <Head>
       <title>{title}</title>
-      <meta name="description" content="Message grid" />
+      <meta name="description" content="Vibber" />
     </Head>
   );
 }
