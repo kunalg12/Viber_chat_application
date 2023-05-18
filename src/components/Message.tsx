@@ -119,7 +119,9 @@ export default function Message({
     <Flex
       paddingBottom={valueIfNextUserIsSelf("5px", "20px")}
       gap={"10px"}
-      width={"100%"}
+      width={"min-content"}
+      marginLeft={user === authUser ? "auto" : ""}
+      marginRight={user === authUser ? "" : "auto"}
     >
       <Flex gap={"5px"}>
         {
