@@ -46,6 +46,9 @@ const ChatSend = ({ router, username, user, callback, updateChat }) => {
         onEnter={sendButtonClick}
         placeholder="Type a message"
       />
+      <Button onClick={sendButtonClick} style={{ margin: "auto 0" }}>
+        <IoPaperPlaneOutline />
+      </Button>
     </Flex>
   );
 };
